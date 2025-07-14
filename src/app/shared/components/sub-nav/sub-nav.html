@@ -1,0 +1,11 @@
+@if (commonService.showSubNav$ | async) {
+<div class="master-navbar">
+    <ul>
+        @for (item of data; track $index) {
+        <li [routerLink]="item.url" routerLinkActive="active">
+            {{ item.name }}
+        </li>
+        }
+    </ul>
+</div>
+}

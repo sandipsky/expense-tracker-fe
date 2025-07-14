@@ -1,0 +1,115 @@
+.sidebar {
+    color: rgb(69, 69, 69);
+    box-shadow: 0px 8px 10px -5px rgba(0, 0, 0, 0.2), 0px 16px 24px 2px rgba(0, 0, 0, 0.14), 0px 6px 30px 5px rgba(0, 0, 0, 0.12);
+    height: 100%;
+    width: 85px;
+    background-color: var(--primary-color);
+    display: flex;
+    flex-direction: column;
+    transition: all ease .5s;
+
+    .logo-container {
+        height: 60px;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        margin-bottom: 24px;
+
+        .logo {
+            font-size: 18px;
+            color: #fff;
+            font-weight: 800;
+            font-family: "Inknut Antiqua", serif;
+            text-align: center;
+        }
+    }
+
+    .items-container {
+        flex-grow: 1;
+
+        ul {
+            padding: 8px 0;
+            list-style: none;
+        }
+    }
+
+    .menu-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 8px 16px;
+        cursor: pointer;
+
+        &:hover {
+            background-color: rgba(0, 0, 0, 0.04);
+        }
+
+        &.active {
+            background-color: rgba(0, 0, 0, .5) !important;
+            box-shadow: -2px 0 5px 0 rgba(0, 0, 0, .25);
+        }
+
+        .icon {
+            color: white;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            // width: 15px;
+            // height: 15px;
+        }
+
+        span {
+            font-size: .6rem !important;
+            font-weight: 600 !important;
+            margin-top: 2px !important;
+            text-align: center;
+            color: white;
+            line-height: 1.75;
+            text-transform: uppercase;
+        }
+    }
+}
+
+@media only screen and (max-width: 699px) {
+    .sidebar {
+        width: 200px;
+        background-color: white;
+
+        .logo-container {
+            .logo {
+                color: var(--text-color);
+                font-size: 32px;
+            }
+        }
+
+        .items-container {
+            flex-grow: 1;
+
+            ul {
+                padding: 8px 0;
+                list-style: none;
+            }
+        }
+
+        .menu-item {
+            flex-direction: row;
+            justify-content: flex-start;
+            gap: 24px;
+
+            &.active {
+                background-color: rgba(0, 0, 0, .5) !important;
+                box-shadow: -2px 0 5px 0 rgba(0, 0, 0, .25);
+            }
+
+            .icon {
+                color: var(--text-color);
+            }
+
+            span {
+                color: var(--text-color);
+            }
+        }
+    }
+}

@@ -1,0 +1,10 @@
+<mat-sidenav-container class="main-container">
+    <mat-sidenav [opened]="!isSmallScreen" class="sidenav" #sidenav [mode]="isSmallScreen ? 'over' : 'side'">
+        <app-sidebar></app-sidebar>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+        <app-header (onMenuClick)="sidenav.toggle()"></app-header>
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>
