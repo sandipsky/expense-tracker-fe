@@ -17,6 +17,10 @@ export const routes: Routes = [
                 component: Dashboard,
             },
             {
+                path: 'calendar',
+                loadComponent: () => import('./features/calendar/calendar').then(m => m.Calendar)
+            },
+            {
                 path: 'transactions',
                 loadComponent: () => import('./features/transaction/transaction').then(m => m.Transaction)
             },

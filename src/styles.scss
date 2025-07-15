@@ -14,3 +14,23 @@ body {
   font-family: "Noto Sans Display", sans-serif;
 
 }
+
+section {
+  padding: 8px;
+}
+
+.feature-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  h1 {
+    font-size: 18px;
+    line-height: 1.75;
+  }
+}
+
+.export-section {
+  display: flex;
+  gap: 12px;
+}

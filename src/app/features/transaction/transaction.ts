@@ -1,20 +1,23 @@
-import { Component, EventEmitter, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonService } from '../../shared/services/common.service';
+import { Table } from '../../shared/components/table/table';
+import { data } from './data';
 
 @Component({
   selector: 'app-transaction',
-  imports: [],
+  imports: [Table],
   templateUrl: './transaction.html',
   styleUrl: './transaction.scss'
 })
 export class Transaction {
   public commonService = inject(CommonService);
 
-  constructor() {
-    this.commonService.showSubNav(true);
-  }
+  tableHeaders = [
+    { name: 'SN', property: 'sn', sort: false },
+    { name: 'Name', property: 'name', sort: true },
+    { name: 'Date', property: 'date', sort: false },
+    { name: 'Amount', property: 'amount', sort: true, amount: true },
+  ];
 
-  emitEvent() {
-    this.commonService.showSubNav(false);
-  }
+  tableData = data;
 }

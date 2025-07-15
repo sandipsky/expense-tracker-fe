@@ -17,6 +17,11 @@ export class Sidebar {
       url: "dashboard"
     },
     {
+      name: "Calendar",
+      icon: "calendar_month",
+      url: "calendar"
+    },
+    {
       name: "Transactions",
       icon: "inventory",
       url: "transactions"

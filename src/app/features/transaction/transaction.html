@@ -1,2 +1,13 @@
-<p>account-master works!</p>
-<button (click)="emitEvent()">C</button>
+<section>
+    <div class="feature-header">
+        <h1>Transactions</h1>
+
+        <div class="export-section">
+            <button class="btn">+ Add</button>
+            <button class="btn-secondary">Export</button>
+        </div>
+    </div>
+
+    <app-table [tableHeaders]="tableHeaders" [tableData]="tableData"></app-table>
+
+</section>

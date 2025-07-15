@@ -1,0 +1,38 @@
+<table class="w-full border-[1px] border-[#ccc]">
+    <thead>
+        @for (item of tableHeaders; track $index) {
+        @if (item.sort == true) {
+        <th class="text-end" [sortValue]="item.property" (sort)="onSort($event)"><a class="sort-by"> Invoice Date </a></th>
+        }
+        @else {
+        <th [class.amount]="item.align == 'right'" class="text-left p-1.5 border-[1px] border-[#ccc]">
+            {{item.name}}</th>
+        }
+        }
+        @if (actions.length > 0) {
+        <th class="text-left p-1.5 border-[1px] border-[#ccc]">Action</th>
+        }
+
+    </thead>
+    <tbody>
+        @for (data of tableData; track $index; let rowIndex = $index) {
+        <tr>
+            @for (header of tableHeaders; track $index;) {
+            <td class="p-1.5 border-[1px] border-[#ccc]">
+                @if (header.property == 'sn') {
+                {{rowIndex + 1}}
+                }
+                @else {
+                {{ header.amount ? (data[header.property] | number:'1.2':'2') : data[header.property] }}
+                }
+            </td>
+            }
+            <td class="p-1.5 border-[1px] border-[#ccc]">
+                <mat-icon>edit</mat-icon>
+                <mat-icon>delete</mat-icon>
+            </td>
+        </tr>
+        }
+
+    </tbody>
+</table>

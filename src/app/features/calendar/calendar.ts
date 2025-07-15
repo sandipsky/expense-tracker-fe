@@ -2,11 +2,12 @@ import { Component, inject } from '@angular/core';
 import { CommonService } from '../../shared/services/common.service';
 
 @Component({
-  selector: 'app-category',
+  selector: 'app-calendar',
   imports: [],
-  templateUrl: './category.html',
-  styleUrl: './category.scss'
+  templateUrl: './calendar.html',
+  styleUrl: './calendar.scss'
 })
-export class Category {
+export class Calendar {
   public commonService = inject(CommonService);
+
 }
