@@ -6,4 +6,15 @@
         border-radius: 0;
         width: auto;
     }
+
+    .main-content {
+        height: 100vh;
+
+        .outlet-content {
+            padding: 12px;
+            margin-top: 40px;
+            height: calc(100vh - 40px);
+            overflow: auto;
+        }
+    }
 }

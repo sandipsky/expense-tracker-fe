@@ -43,18 +43,26 @@
     }
 }
 
+.table-responsive {
+    overflow: auto;
+    width: 100%;
+}
 
 table {
     width: 100%;
     border-collapse: collapse;
+    margin-top: 12px;
 
     th {
-        padding: 8px;
         background: #F7F7F7;
-        text-align: left;
     }
 
+    th,
     td {
-        padding: 8px;
+        padding: 6px;
+        border: 1px solid #CED4DA;
+        text-align: left;
+        font-size: 14px;
+        white-space: nowrap;
     }
 }

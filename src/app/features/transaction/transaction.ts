@@ -2,6 +2,8 @@ import { Component, inject } from '@angular/core';
 import { CommonService } from '../../shared/services/common.service';
 import { Table } from '../../shared/components/table/table';
 import { data } from './data';
+import { SortEvent } from '../../shared/directives/sortable/sortable-header.directive';
+import { ITransaction } from './transaction.model';
 
 @Component({
   selector: 'app-transaction',
@@ -14,10 +16,18 @@ export class Transaction {
 
   tableHeaders = [
     { name: 'SN', property: 'sn', sort: false },
-    { name: 'Name', property: 'name', sort: true },
-    { name: 'Date', property: 'date', sort: false },
+    { name: 'Entry No.', property: 'system_entry_no', sort: false },
+    { name: 'Date', property: 'date', sort: true },
+    { name: 'Category', property: 'category_name', sort: true },
+    { name: 'Account', property: 'account_name', sort: true },
     { name: 'Amount', property: 'amount', sort: true, amount: true },
+    { name: 'User', property: 'user_name', sort: true, amount: true },
+    { name: 'Remarks', property: 'remarks', sort: true },
   ];
 
-  tableData = data;
+  tableData: ITransaction[] = data;
+
+  onSort(event: SortEvent) {
+
+  }
 }

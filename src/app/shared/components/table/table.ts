@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
-import { SortableHeaderDirective } from '../../directives/sortable/sortable-header.directive';
+import { SortableHeaderDirective, SortEvent } from '../../directives/sortable/sortable-header.directive';
 
 @Component({
   selector: 'app-table',
@@ -13,8 +13,9 @@ export class Table {
   @Input() tableHeaders: any[] = [];
   @Input() tableData: any[] = [];
   @Input() actions: string[] = ['a'];
+  @Output() sortChange = new EventEmitter<SortEvent>();
 
-  onSort(event: any) {
-
+  onSort(event: SortEvent) {
+    this.sortChange.emit(event);
   }
 }

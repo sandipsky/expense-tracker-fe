@@ -8,6 +8,5 @@
         </div>
     </div>
 
-    <app-table [tableHeaders]="tableHeaders" [tableData]="tableData"></app-table>
-
+    <app-table (sortChange)="onSort($event)" [tableHeaders]="tableHeaders" [tableData]="tableData"></app-table>
 </section>
