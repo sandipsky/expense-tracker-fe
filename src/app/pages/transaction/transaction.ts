@@ -4,10 +4,11 @@ import { Table } from '../../shared/components/table/table';
 import { data } from './data';
 import { SortEvent } from '../../shared/directives/sortable/sortable-header.directive';
 import { ITransaction } from './transaction.model';
+import { PaginatorComponent } from '../../shared/components/paginator/paginator.component';
 
 @Component({
   selector: 'app-transaction',
-  imports: [Table],
+  imports: [Table, PaginatorComponent],
   templateUrl: './transaction.html',
   styleUrl: './transaction.scss'
 })
@@ -29,5 +30,11 @@ export class Transaction {
 
   onSort(event: SortEvent) {
 
+  }
+
+  constructor() {
+    this.commonService.showSpinner(true);
+
+    setTimeout(() => this.commonService.showSpinner(false), 500)
   }
 }

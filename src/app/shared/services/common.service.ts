@@ -6,16 +6,16 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class CommonService {
   private showSubNavSubject = new BehaviorSubject<boolean>(true);
-  private showSideNavSubject = new BehaviorSubject<boolean>(true);
+  private showSpinnerSubject = new BehaviorSubject<boolean>(false);
 
   showSubNav$ = this.showSubNavSubject.asObservable();
-  showSideNav$ = this.showSideNavSubject.asObservable();
+  showSpinner$ = this.showSpinnerSubject.asObservable();
 
   showSubNav(value: boolean): void {
     this.showSubNavSubject.next(value);
   }
 
-  showSideNav(value: boolean): void {
-    this.showSideNavSubject.next(value);
+  showSpinner(value: boolean): void {
+    this.showSpinnerSubject.next(value);
   }
 }
