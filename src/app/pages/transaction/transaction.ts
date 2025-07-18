@@ -28,13 +28,15 @@ export class Transaction {
 
   tableData: ITransaction[] = data;
 
-  onSort(event: SortEvent) {
-
-  }
-
   constructor() {
     this.commonService.showSpinner(true);
 
     setTimeout(() => this.commonService.showSpinner(false), 500)
   }
+
+  onSort(event: SortEvent) {
+
+  }
+
+
 }
