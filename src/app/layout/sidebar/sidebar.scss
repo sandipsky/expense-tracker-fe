@@ -8,22 +8,6 @@
     flex-direction: column;
     transition: all ease .5s;
 
-    .logo-container {
-        height: 60px;
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        margin-bottom: 24px;
-
-        .logo {
-            font-size: 18px;
-            color: #fff;
-            font-weight: 800;
-            font-family: "Inknut Antiqua", serif;
-            text-align: center;
-        }
-    }
-
     .items-container {
         flex-grow: 1;
 
@@ -76,13 +60,6 @@
     .sidebar {
         width: 200px;
         background-color: white;
-
-        .logo-container {
-            .logo {
-                color: var(--text-color);
-                font-size: 32px;
-            }
-        }
 
         .items-container {
             flex-grow: 1;

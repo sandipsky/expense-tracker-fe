@@ -8,10 +8,44 @@
     top: 0;
     z-index: 3;
     background-color: white;
-    width: 100%;
+    width: calc(100% - 85px);
     height: 40px;
 
-    .s {
-        flex-grow: 1;
+    .header-left-group {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        width: fit-content;
+    }
+
+    .header-right-group {
+        color: #000;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+
+        .profile-group {
+            display: flex;
+            align-items: center;
+
+            img {
+                width: 25px;
+                height: 25px;
+                border-radius: 50%;
+                object-fit: cover;
+            }
+        }
+    }
+
+    .icon {
+        color: var(--text-color);
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .notification {
+        font-size: 22px;
     }
 }

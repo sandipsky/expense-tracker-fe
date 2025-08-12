@@ -1,11 +1,14 @@
 <header class="header">
-    <mat-icon (click)="emitClick()" class="icon" fontIcon="menu"></mat-icon>
+    <div class="header-left-group">
+        <mat-icon (click)="emitClick()" class="icon" fontIcon="menu"></mat-icon>
+        <h3>Expense Tracker App</h3>
+    </div>
 
-    <span>Sky Pvt. Ltd.</span>
-
-    <span class="s"></span>
-
-    <div class="right-section">
-        
+    <div class="header-right-group">
+        <mat-icon class="icon notification" fontIcon="notifications"></mat-icon>
+        <div class="profile-group">
+            <img src="/profile.jpg">
+            <mat-icon class="icon" fontIcon="keyboard_arrow_down"></mat-icon>
+        </div>
     </div>
 </header>
