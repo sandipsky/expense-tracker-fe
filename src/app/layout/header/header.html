@@ -6,9 +6,16 @@
 
     <div class="header-right-group">
         <mat-icon class="icon notification" fontIcon="notifications"></mat-icon>
-        <div class="profile-group">
-            <img src="/profile.jpg">
-            <mat-icon class="icon" fontIcon="keyboard_arrow_down"></mat-icon>
-        </div>
+
+        <dropdown-menu>
+            <div dropdown-display class="profile-group">
+                <img src="/profile.jpg">
+                <mat-icon class="icon" fontIcon="keyboard_arrow_down"></mat-icon>
+            </div>
+
+            <a dropdown-item> <mat-icon class="icon" fontIcon="person"></mat-icon> Profile</a>
+            <a dropdown-item> <mat-icon class="icon" fontIcon="logout"></mat-icon> Logout</a>
+        </dropdown-menu>
+
     </div>
 </header>

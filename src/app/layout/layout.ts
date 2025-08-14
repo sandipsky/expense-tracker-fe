@@ -14,6 +14,10 @@ export class Layout {
   isSmallScreen: boolean = false;
   @ViewChild('sidenav') sidenav!: MatSidenav;
 
+  constructor() {
+    this.isSmallScreen = window.innerWidth < 700;
+  }
+
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
     if (event.target.innerWidth < 700) {

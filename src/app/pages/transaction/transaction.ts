@@ -4,11 +4,10 @@ import { Table } from '../../shared/components/table/table';
 import { data } from './data';
 import { SortEvent } from '../../shared/directives/sortable/sortable-header.directive';
 import { ITransaction } from './transaction.model';
-import { PaginatorComponent } from '../../shared/components/paginator/paginator.component';
 
 @Component({
   selector: 'app-transaction',
-  imports: [Table, PaginatorComponent],
+  imports: [Table],
   templateUrl: './transaction.html',
   styleUrl: './transaction.scss'
 })
