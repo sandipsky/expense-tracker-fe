@@ -7,20 +7,21 @@
                 </a></th>
             }
             @else {
-            <th [class.amount]="item.align == 'right'" class="text-left p-1.5 border-[1px] border-[#ccc]">
+            <th [class.amount]="item.align == 'right'" class="border-[1px] border-[#ccc]">
                 {{item.name}}</th>
             }
             }
             @if (actions.length > 0) {
-            <th class="text-left p-1.5 border-[1px] border-[#ccc]">Action</th>
+            <th class="border-[1px] border-[#ccc]">Action</th>
             }
 
         </thead>
+        @if(tableData.length > 0) {
         <tbody>
             @for (data of tableData; track $index; let rowIndex = $index) {
             <tr>
                 @for (header of tableHeaders; track $index;) {
-                <td class="p-1.5 border-[1px] border-[#ccc]">
+                <td class="border-[1px] border-[#ccc]">
                     @if (header.property == 'sn') {
                     {{rowIndex + 1}}
                     }
@@ -29,7 +30,7 @@
                     }
                 </td>
                 }
-                <td class="p-1.5 border-[1px] border-[#ccc]">
+                <td class="border-[1px] border-[#ccc]">
                     <mat-icon>edit</mat-icon>
                     <mat-icon>delete</mat-icon>
                 </td>
@@ -37,5 +38,16 @@
             }
 
         </tbody>
+        } @else {
+        <tbody>
+            <tr>
+                <td class="no-data" [attr.colspan]="tableHeaders.length + 1">
+                    <h3>No Data</h3>
+                    <p>No Records Found...</p>
+                </td>
+            </tr>
+        </tbody>
+        }
+
     </table>
 </div>

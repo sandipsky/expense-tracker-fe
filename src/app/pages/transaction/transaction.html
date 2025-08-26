@@ -7,6 +7,6 @@
             <button class="btn-secondary">Export</button>
         </div>
     </div>
-
+    <app-paginator (pageChange)="onPageChange($event)" [pageSize]="filterData.pageSize" [pageIndex]="filterData.pageIndex" [length]="filterData.length"></app-paginator>
     <app-table (sortChange)="onSort($event)" [tableHeaders]="tableHeaders" [tableData]="tableData"></app-table>
 </section>

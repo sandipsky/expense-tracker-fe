@@ -66,3 +66,14 @@ table {
         white-space: nowrap;
     }
 }
+
+.no-data{
+  padding: 48px 0px !important;
+  text-align: center !important;
+  width: 100%;
+  p{
+    color: rgba(51, 51, 51, 0.5);
+    font-size: 14px;
+    line-height: 21px;
+  }
+}
