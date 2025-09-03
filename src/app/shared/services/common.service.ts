@@ -15,7 +15,11 @@ export class CommonService {
     this.showSubNavSubject.next(value);
   }
 
-  showSpinner(value: boolean): void {
-    this.showSpinnerSubject.next(value);
+  showSpinner(): void {
+    this.showSpinnerSubject.next(true);
+  }
+
+  hideSpinner(): void {
+    this.showSpinnerSubject.next(false);
   }
 }

@@ -5,15 +5,20 @@ import { SortEvent } from '../../shared/directives/sortable/sortable-header.dire
 import { ITransaction } from './transaction.model';
 import { PaginatorComponent } from '../../shared/components/paginator/paginator.component';
 import { PageEvent } from '@angular/material/paginator';
+import { TransactionService } from './transaction.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-transaction',
-  imports: [Table, PaginatorComponent],
+  imports: [Table, PaginatorComponent, HttpClientModule],
+  providers: [TransactionService],
   templateUrl: './transaction.html',
   styleUrl: './transaction.scss'
 })
 export class Transaction {
   public commonService = inject(CommonService);
+  public transactionService = inject(TransactionService);
+
   filterData = {
     pageIndex: 0,
     pageSize: 25,
@@ -33,23 +38,32 @@ export class Transaction {
 
   tableData: ITransaction[] = [];
 
-  constructor() {}
+  constructor() { }
+
+  ngOnInit() {
+    this.getTransactionList();
+  }
 
   onSort(event: SortEvent) {
 
   }
 
   onPageChange(pageData: PageEvent) {
-    this.filterData.pageIndex = pageData.pageIndex;
-    this.filterData.pageSize = pageData.pageSize;
-    this.commonService.showSpinner(true);
-    setTimeout(() => this.commonService.showSpinner(false), 500)
 
   }
 
 
   getTransactionList() {
-
+    this.commonService.showSpinner();
+    this.transactionService.getTransactions().subscribe({
+      next: (transactions: ITransaction[]) => {
+          this.tableData = transactions;
+          this.commonService.hideSpinner();
+      },
+      error: (err) => {
+          this.commonService.hideSpinner();
+      }
+    })
   }
 
 }
