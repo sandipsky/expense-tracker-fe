@@ -31,8 +31,8 @@ export class Transaction {
     { name: 'Date', property: 'date', sort: true },
     { name: 'Category', property: 'category_name', sort: true },
     { name: 'Account', property: 'account_name', sort: true },
-    { name: 'Amount', property: 'amount', sort: true, amount: true },
-    { name: 'User', property: 'user_name', sort: true, amount: true },
+    { name: 'Amount', property: 'amount', sort: true, amount: true, align: 'right' },
+    { name: 'User', property: 'user_name', sort: true },
     { name: 'Remarks', property: 'remarks', sort: true },
   ];
 

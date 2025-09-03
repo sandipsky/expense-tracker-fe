@@ -67,6 +67,23 @@ table {
     }
 }
 
+.text-end {
+    text-align: right !important;
+}
+
+.status {
+    padding: 2px;
+    border-radius: 4px;
+
+    &.active {
+        background-color: green;
+    }
+
+    &.inactive {
+        background-color: red;
+    }
+}
+
 .no-data{
   padding: 48px 0px !important;
   text-align: center !important;

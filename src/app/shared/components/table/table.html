@@ -3,11 +3,12 @@
         <thead>
             @for (item of tableHeaders; track $index) {
             @if (item.sort == true) {
-            <th class="text-end" [sortValue]="item.property" (sort)="onSort($event)"><a class="sort-by"> {{item.name}}
+            <th [class.text-end]="item.align == 'right'" [sortValue]="item.property" (sort)="onSort($event)"><a
+                    class="sort-by"> {{item.name}}
                 </a></th>
             }
             @else {
-            <th [class.amount]="item.align == 'right'" class="border-[1px] border-[#ccc]">
+            <th [class.text-end]="item.align == 'right'" class="border-[1px] border-[#ccc]">
                 {{item.name}}</th>
             }
             }
@@ -21,12 +22,12 @@
             @for (data of tableData; track $index; let rowIndex = $index) {
             <tr>
                 @for (header of tableHeaders; track $index;) {
-                <td class="border-[1px] border-[#ccc]">
+                <td [ngClass]="header.status == true ? data[header.property] ?  'status active' : 'status inactive' : ''" [class.text-end]="header.align == 'right'" class="border-[1px] border-[#ccc]">
                     @if (header.property == 'sn') {
                     {{rowIndex + 1}}
                     }
                     @else {
-                    {{ header.amount ? (data[header.property] ) : data[header.property] }}
+                    {{ header.amount ? (data[header.property] | amount ) : data[header.property] }}
                     }
                 </td>
                 }
