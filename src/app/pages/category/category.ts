@@ -7,6 +7,8 @@ import { PaginatorComponent } from '../../shared/components/paginator/paginator.
 import { PageEvent } from '@angular/material/paginator';
 import { CategoryService } from './category.service';
 import { HttpClientModule } from '@angular/common/http';
+import { MatDialog } from '@angular/material/dialog';
+import { CategoryModal } from './category-modal/category-modal';
 
 @Component({
   selector: 'app-category',
@@ -17,7 +19,8 @@ import { HttpClientModule } from '@angular/common/http';
 })
 export class Category {
   public commonService = inject(CommonService);
-  public categoryService = inject(CategoryService);
+  private _categoryService = inject(CategoryService);
+  private _dialog = inject(MatDialog)
 
   filterData = {
     pageIndex: 0,
@@ -52,7 +55,7 @@ export class Category {
 
   getCategoryList() {
     this.commonService.showSpinner();
-    this.categoryService.getCategorys().subscribe({
+    this._categoryService.getCategorys().subscribe({
       next: (categorys: ICategory[]) => {
         this.tableData = categorys;
         this.commonService.hideSpinner();
@@ -61,6 +64,13 @@ export class Category {
         this.commonService.hideSpinner();
       }
     })
+  }
+
+  showAddForm() {
+    this._dialog.open(CategoryModal, {
+      width: '800px',
+      position: { top: '64px' }
+    });
   }
 
 }

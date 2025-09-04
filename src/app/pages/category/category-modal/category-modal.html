@@ -1,0 +1,39 @@
+<div class="modal">
+    <div class="modal-header">
+        <h1 class="modal-title">
+            Category
+        </h1>
+        <mat-icon mat-dialog-close class="icon dialog-icon" fontIcon="close"></mat-icon>
+    </div>
+
+    <div class="modal-body">
+        <form [formGroup]="modalForm">
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="">Name</label>
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="">Status</label>
+                        <label class="switch">
+                            <input formControlName="is_active" type="checkbox">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+    </div>
+
+    <div class="modal-footer">
+
+    </div>
+</div>

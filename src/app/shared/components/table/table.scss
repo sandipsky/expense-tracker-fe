@@ -72,8 +72,9 @@ table {
 }
 
 .status {
-    padding: 2px;
+    padding: 4px;
     border-radius: 4px;
+    color: white;
 
     &.active {
         background-color: green;

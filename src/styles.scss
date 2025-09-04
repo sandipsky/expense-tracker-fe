@@ -3,6 +3,9 @@
 
 @import "scss/_colors";
 @import "scss/_button";
+@import "scss/_modal";
+@import "scss/_bootstrap";
+@import "scss/_form";
 
 * {
   margin: 0;
@@ -29,4 +32,8 @@ body {
 .export-section {
   display: flex;
   gap: 12px;
+}
+
+.mat-mdc-dialog-surface {
+  border-radius: 0px !important;
 }

@@ -22,9 +22,18 @@
             @for (data of tableData; track $index; let rowIndex = $index) {
             <tr>
                 @for (header of tableHeaders; track $index;) {
-                <td [ngClass]="header.status == true ? data[header.property] ?  'status active' : 'status inactive' : ''" [class.text-end]="header.align == 'right'" class="border-[1px] border-[#ccc]">
+                <td [class.text-end]="header.align == 'right'" class="border-[1px] border-[#ccc]">
                     @if (header.property == 'sn') {
                     {{rowIndex + 1}}
+                    }
+                    @else if(header.status == true) {
+                        @if(data[header.property] == true) {
+                            <span class="status active">Active</span>
+                        }
+                        @else {
+                            <span class="status inactive">Inactive</span>
+                        }
+                    <span></span>
                     }
                     @else {
                     {{ header.amount ? (data[header.property] | amount ) : data[header.property] }}
