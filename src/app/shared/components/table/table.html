@@ -3,7 +3,7 @@
         <thead>
             @for (item of tableHeaders; track $index) {
             @if (item.sort == true) {
-            <th [class.text-end]="item.align == 'right'" [sortValue]="item.property" (sort)="onSort($event)"><a
+            <th [class.text-end]="item.align == 'right'" [sortable]="item.sortBy" (sort)="onSort($event)"><a
                     class="sort-by"> {{item.name}}
                 </a></th>
             }

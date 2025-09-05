@@ -6,13 +6,12 @@ export interface SortEvent {
 }
 
 @Directive({
-  selector: 'th[sortValue]',
+  selector: 'th[sortable]',
   standalone: true
 })
 
 export class SortableHeaderDirective {
   @Input() sortable: string = '';
-  @Input() sortValue: any;
   @Input() direction: 'asc' | 'desc' | '' = '';
   @Output() sort = new EventEmitter<SortEvent>();
   static prevSortable: string = '';
@@ -65,7 +64,7 @@ export class SortableHeaderDirective {
 
   private sortChange() {
     this.sort.emit({
-      column: this.direction != '' ? this.sortable : '',
+      column: this.sortable,
       direction: this.direction
     });
   }
