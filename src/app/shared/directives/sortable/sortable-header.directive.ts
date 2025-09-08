@@ -19,7 +19,6 @@ export class SortableHeaderDirective {
   constructor(private el: ElementRef, private renderer: Renderer2) { }
 
   @HostListener('click') onClick() {
-    console.log('asdf')
     if (SortableHeaderDirective.prevSortable == this.sortable) {
       this.toggleSortDirection();
     }

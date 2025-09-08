@@ -27,7 +27,6 @@ export class DropdownMenuComponent {
   }
 
   closeDropdown() {
-    console.log(true);
     this.isOpen = false;
   }
 }

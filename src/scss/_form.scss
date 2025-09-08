@@ -5,6 +5,7 @@
     margin-bottom: 12px;
     justify-content: space-between;
     gap: 12px;
+    margin-bottom: 24px 0;
 
     label {
         font-size: 13px;
@@ -30,6 +31,15 @@
             background-color: var(--disabled-color);
         }
     }
+
+    textarea.form-control {
+      height: 50px;
+    }
+}
+
+.invalid {
+    font-size: 11px;
+    color: #BB2124;
 }
 
 
@@ -71,11 +81,11 @@
 }
 
 input:checked + .slider {
-  background-color: #2196F3;
+  background-color: var(--primary-color);
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
+  box-shadow: 0 0 1px var(--primary-color);
 }
 
 input:checked + .slider:before {

@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Display:wght@400;500;600;700;800;900&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@300;400;500;600;700;800;900&display=swap');
+@import "@ng-select/ng-select/themes/default.theme.css";
+@import 'ngx-toastr/toastr';
 
 @import "scss/_colors";
 @import "scss/_button";
@@ -36,4 +38,15 @@ body {
 
 .mat-mdc-dialog-surface {
   border-radius: 0px !important;
+}
+
+.ng-select {
+    min-height: 0px;
+    height: 29px !important;
+}
+
+.ng-select .ng-select-container {
+    min-height: 0px;
+    height: 29px !important;
+    border-radius: 4px;
 }

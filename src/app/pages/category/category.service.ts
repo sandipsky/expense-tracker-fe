@@ -5,6 +5,7 @@ import { environment } from '../../../environments/environment';
 import { ICategory } from './category.model';
 import { FilterData } from '../../shared/types/filter.model';
 import { PageResponse } from '../../shared/types/page-response.model';
+import { ApiResponse } from '../../shared/types/api-response.model';
 
 @Injectable({
     providedIn: 'root'
@@ -17,5 +18,8 @@ export class CategoryService {
         return this.http.post<PageResponse<ICategory[]>>(this.apiUrl + '/category', filterData);
     }
 
+    createCategory(formData: ICategory): Observable<ApiResponse> {
+        return this.http.post<ApiResponse>(this.apiUrl + '/category/add', formData);
+    }
 }
 

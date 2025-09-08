@@ -10,6 +10,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { CategoryModal } from './category-modal/category-modal';
 import { FilterData } from '../../shared/types/filter.model';
 import { PageResponse } from '../../shared/types/page-response.model';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-category',
@@ -80,10 +81,16 @@ export class Category {
   }
 
   showAddForm() {
-    this._dialog.open(CategoryModal, {
+    const dialogRef = this._dialog.open(CategoryModal, {
       width: '800px',
       position: { top: '64px' }
     });
+
+    dialogRef.afterClosed().subscribe(data => {
+      if(data == true) {
+        this.getCategoryList();
+      }
+    })
   }
 
 }
