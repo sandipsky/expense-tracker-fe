@@ -55,6 +55,7 @@
     padding: 6px 0px;
     display: flex;
     flex-direction: column;
+    z-index: 2;
 
     &.active {
         visibility: visible;

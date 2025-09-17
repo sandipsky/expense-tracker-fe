@@ -15,6 +15,8 @@ export class Table {
   @Input() tableData: any[] = [];
   @Input() actions: string[] = ['a'];
   @Output() sortChange = new EventEmitter<SortEvent>();
+  @Output() onEdit = new EventEmitter<any>();
+  @Output() onDelete = new EventEmitter<any>();
 
   onSort(event: SortEvent) {
     this.sortChange.emit(event);

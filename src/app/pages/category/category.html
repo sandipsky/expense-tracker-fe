@@ -8,5 +8,5 @@
         </div>
     </div>
     <app-paginator (pageChange)="onPageChange($event)" [pageSize]="filterData.pageSize" [pageIndex]="filterData.pageIndex" [length]="length"></app-paginator>
-    <app-table (sortChange)="onSort($event)" [tableHeaders]="tableHeaders" [tableData]="tableData"></app-table>
+    <app-table (onEdit)="editCategory($event)" (onDelete)="deleteCategory($event)" (sortChange)="onSort($event)" [tableHeaders]="tableHeaders" [tableData]="tableData"></app-table>
 </section>

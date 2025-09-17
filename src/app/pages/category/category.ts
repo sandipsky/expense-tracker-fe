@@ -63,7 +63,9 @@ export class Category {
   }
 
   onPageChange(pageData: PageEvent) {
-
+    this.filterData.pageIndex = pageData.pageIndex;
+    this.filterData.pageSize = pageData.pageSize;
+    this.getCategoryList();
   }
 
 
@@ -87,7 +89,34 @@ export class Category {
     });
 
     dialogRef.afterClosed().subscribe(data => {
-      if(data == true) {
+      if (data == true) {
+        this.getCategoryList();
+      }
+    })
+  }
+
+  editCategory(category: CategoryModal) {
+    const dialogRef = this._dialog.open(CategoryModal, {
+      width: '800px',
+      position: { top: '64px' },
+      data: category
+    });
+
+    dialogRef.afterClosed().subscribe(data => {
+      if (data == true) {
+        this.getCategoryList();
+      }
+    })
+  }
+
+  deleteCategory(category: CategoryModal) {
+    const dialogRef = this._dialog.open(CategoryModal, {
+      width: '800px',
+      position: { top: '64px' }
+    });
+
+    dialogRef.afterClosed().subscribe(data => {
+      if (data == true) {
         this.getCategoryList();
       }
     })
