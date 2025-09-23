@@ -1,0 +1,23 @@
+<div class="modal">
+    <div class="modal-header modall-style-danger">
+        <h5 class="modal-title" id="modal-title">
+            Delete Confirmation
+        </h5>
+        <button mat-button mat-dialog-close type="button" class="btn-close" aria-describedby="modal-title">
+        </button>
+    </div>
+    <div class="modal-body">
+        <p>
+            Are You Sure You want to delete?
+        </p>
+    </div>
+    <div class="modal-footer">
+        <button (click)="deleteItem()" type="button" class="btn btn-danger">
+            Delete
+        </button>
+        <button mat-button mat-dialog-close type="button" class="btn btn-outline-secondary">
+            Cancel
+        </button>
+
+    </div>
+</div>

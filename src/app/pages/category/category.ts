@@ -11,6 +11,7 @@ import { CategoryModal } from './category-modal/category-modal';
 import { FilterData } from '../../shared/types/filter.model';
 import { PageResponse } from '../../shared/types/page-response.model';
 import { ToastrService } from 'ngx-toastr';
+import { DeleteModal } from '../../shared/components/delete-modal/delete-modal';
 
 @Component({
   selector: 'app-category',
@@ -110,13 +111,13 @@ export class Category {
   }
 
   deleteCategory(category: CategoryModal) {
-    const dialogRef = this._dialog.open(CategoryModal, {
+    const dialogRef = this._dialog.open(DeleteModal, {
       width: '800px',
       position: { top: '64px' }
     });
 
-    dialogRef.afterClosed().subscribe(data => {
-      if (data == true) {
+    dialogRef.afterClosed().subscribe(result => {
+      if (result == true) {
         this.getCategoryList();
       }
     })
