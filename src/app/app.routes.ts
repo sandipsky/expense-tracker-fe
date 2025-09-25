@@ -47,7 +47,17 @@ export const routes: Routes = [
             {
                 path: 'settings',
                 loadComponent: () => import('./pages/settings/settings').then(m => m.Settings)
-            }
-        ]
+            },
+
+        ],
+
+    },
+    {
+        path: 'login',
+        loadComponent: () => import('./pages/login/login').then(m => m.Login)
+    },
+    {
+        path: 'register',
+        loadComponent: () => import('./pages/registration/registration').then(m => m.Registration)
     }
 ];
