@@ -11,15 +11,23 @@ import { ApiResponse } from '../../shared/types/api-response.model';
     providedIn: 'root'
 })
 export class CategoryService {
-    apiUrl = environment.apiUrl;
+    apiUrl = environment.apiUrl + '/category';
     constructor(private http: HttpClient) { }
 
     getCategorys(filterData: FilterData): Observable<PageResponse<ICategory[]>> {
-        return this.http.post<PageResponse<ICategory[]>>(this.apiUrl + '/category', filterData);
+        return this.http.post<PageResponse<ICategory[]>>(this.apiUrl, filterData);
     }
 
     createCategory(formData: ICategory): Observable<ApiResponse> {
-        return this.http.post<ApiResponse>(this.apiUrl + '/category/add', formData);
+        return this.http.post<ApiResponse>(this.apiUrl + '/add', formData);
+    }
+
+    editCategory(formData: ICategory, id: number): Observable<ApiResponse> {
+        return this.http.put<ApiResponse>(this.apiUrl + `/edit/${id}`, formData);
+    }
+
+    deleteCategory(id: number): Observable<ApiResponse> {
+        return this.http.delete<ApiResponse>(this.apiUrl + `/delete/${id}`);
     }
 }
 
