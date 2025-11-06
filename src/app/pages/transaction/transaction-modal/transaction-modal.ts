@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { CommonService } from '../../../shared/services/common.service';
-import { CategoryService } from '../category.service';
+import { TransactionService } from '../transaction.service';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -8,40 +8,56 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { ToastrService } from 'ngx-toastr';
 import { ApiResponse } from '../../../shared/types/api-response.model';
 import { InputValidatorDirective } from '../../../shared/directives/input-validator/input-validator.directive';
+import { DropdownItem } from '../../../shared/types/dropdown';
+import { DropdownService } from '../../../shared/services/dropdown.service';
 
 @Component({
-  selector: 'app-category',
+  selector: 'app-transaction',
   imports: [MatIconModule, MatDialogModule, ReactiveFormsModule, NgSelectModule, InputValidatorDirective],
-  providers: [CategoryService],
-  templateUrl: './category-modal.html',
-  styleUrl: './category-modal.scss'
+  providers: [TransactionService],
+  templateUrl: './transaction-modal.html'
 })
-export class CategoryModal {
+export class TransactionModal {
   public commonService = inject(CommonService);
-  private _categoryService = inject(CategoryService);
+  private _transactionService = inject(TransactionService);
+  private _dropdownService = inject(DropdownService);
   private _fb = inject(FormBuilder);
   private _toastr = inject(ToastrService);
-  private _dialogRef = inject(MatDialogRef<CategoryModal>);
+  private _dialogRef = inject(MatDialogRef<TransactionModal>);
+  public categoryList: DropdownItem[] = [];
 
   modalForm: FormGroup;
 
-  categoryTypes: string[] = ['Expense', 'Income']
+  transactionTypes: string[] = ['Expense', 'Income']
 
   constructor() {
     this.modalForm = this._fb.nonNullable.group({
       id: [],
+      date: [, Validators.required],
       name: [, Validators.required],
-      color_code: [],
-      type: ["Expense", Validators.required],
-      description: [],
-      is_active: [true, Validators.required]
-    })
+      system_entry_no: [],
+      amount: [0, [Validators.required, Validators.min(0.01)]],
+      remarks: [],
+      category_id: [, Validators.required],
+      user_id: [, Validators.required],
+      account_id: [, Validators.required],
+      is_active: [true]
+    });
   }
 
   ngOnInit() {
+    this.getCategoryDropdownList();
   }
 
   get f() { return this.modalForm.controls; }
+
+  getCategoryDropdownList() {
+    this._dropdownService.getCategoryDropdown().subscribe({
+      next: (items: DropdownItem[]) => {
+        this.categoryList = items;
+      }
+    })
+  }
 
   saveForm() {
     this.modalForm.markAllAsTouched();
@@ -52,8 +68,8 @@ export class CategoryModal {
     this.commonService.showSpinner();
     const formData = this.modalForm.value;
     const request$ = formData.id
-      ? this._categoryService.updateCategory(formData.id, formData)
-      : this._categoryService.createCategory(formData);
+      ? this._transactionService.updateTransaction(formData.id, formData)
+      : this._transactionService.createTransaction(formData);
 
     request$.subscribe({
       next: (res: ApiResponse) => {

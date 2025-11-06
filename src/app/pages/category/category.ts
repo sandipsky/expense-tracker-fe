@@ -12,6 +12,7 @@ import { FilterData } from '../../shared/types/filter.model';
 import { PageResponse } from '../../shared/types/page-response.model';
 import { ToastrService } from 'ngx-toastr';
 import { DeleteModal } from '../../shared/components/delete-modal/delete-modal';
+import { ApiResponse } from '../../shared/types/api-response.model';
 
 @Component({
   selector: 'app-category',
@@ -24,6 +25,7 @@ export class Category {
   public commonService = inject(CommonService);
   private _categoryService = inject(CategoryService);
   private _dialog = inject(MatDialog);
+  private _toastr = inject(ToastrService);
   length: number = 0;
 
   filterData: FilterData = {
@@ -31,7 +33,7 @@ export class Category {
     pageSize: 25,
     sort: [],
     filter: []
-  }
+  };
 
   tableHeaders = [
     { name: 'SN', property: 'sn', sort: false },
@@ -96,7 +98,7 @@ export class Category {
     })
   }
 
-  editCategory(category: CategoryModal) {
+  editCategory(category: ICategory) {
     const dialogRef = this._dialog.open(CategoryModal, {
       width: '800px',
       position: { top: '64px' },
@@ -110,7 +112,7 @@ export class Category {
     })
   }
 
-  deleteCategory(category: CategoryModal) {
+  deleteCategory(category: ICategory) {
     const dialogRef = this._dialog.open(DeleteModal, {
       width: '800px',
       position: { top: '64px' }
@@ -118,9 +120,19 @@ export class Category {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result == true) {
-        this.getCategoryList();
+        this.commonService.showSpinner();
+        this._categoryService.deleteCategory(category.id).subscribe({
+          next: (res: ApiResponse) => {
+            this.commonService.hideSpinner();
+            this._toastr.success(res.message);
+            this.getCategoryList();
+          },
+          error: (err) => {
+            this.commonService.hideSpinner();
+            this._toastr.error(err?.error?.message);
+          }
+        })
       }
     })
   }
-
 }

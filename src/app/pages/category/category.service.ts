@@ -22,7 +22,7 @@ export class CategoryService {
         return this.http.post<ApiResponse>(this.apiUrl + '/add', formData);
     }
 
-    editCategory(formData: ICategory, id: number): Observable<ApiResponse> {
+    updateCategory(formData: ICategory, id: number): Observable<ApiResponse> {
         return this.http.put<ApiResponse>(this.apiUrl + `/edit/${id}`, formData);
     }
 

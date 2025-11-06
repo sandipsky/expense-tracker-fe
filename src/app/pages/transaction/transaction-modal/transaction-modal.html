@@ -1,7 +1,7 @@
 <div class="modal">
     <div class="modal-header">
         <h1 class="modal-title">
-           {{ modalForm.value.id ? 'Edit' : 'Add' }} Category
+           {{ modalForm.value.id ? 'Edit' : 'Add' }} Transaction
         </h1>
         <mat-icon mat-dialog-close class="icon dialog-icon" fontIcon="close"></mat-icon>
     </div>
@@ -11,7 +11,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="">Name</label>
+                        <label for="">For</label>
                         <input appFormError appFormError formControlName="name" type="text" class="form-control"
                             [class.is-invalid]="f['name'].invalid &&
                         (f['name'].dirty || f['name'].touched)">
@@ -20,16 +20,6 @@
             </div>
 
             <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="">Type</label>
-                        <ng-select appFormError formControlName="type" [clearable]="false" [items]="categoryTypes"
-                            placeholder="Select Type"
-                            [class.is-invalid]="f['type'].invalid &&
-                        (f['type'].dirty || f['type'].touched)">
-                        </ng-select>
-                    </div>
-                </div>
 
                 <div class="col-md-6">
                     <div class="form-group">
