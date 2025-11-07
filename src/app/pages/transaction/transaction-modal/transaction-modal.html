@@ -1,7 +1,7 @@
 <div class="modal">
     <div class="modal-header">
         <h1 class="modal-title">
-           {{ modalForm.value.id ? 'Edit' : 'Add' }} Transaction
+            {{ modalForm.value.id ? 'Edit' : 'Add' }} Transaction
         </h1>
         <mat-icon mat-dialog-close class="icon dialog-icon" fontIcon="close"></mat-icon>
     </div>
@@ -11,32 +11,43 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="">For</label>
-                        <input appFormError appFormError formControlName="name" type="text" class="form-control"
-                            [class.is-invalid]="f['name'].invalid &&
-                        (f['name'].dirty || f['name'].touched)">
+                        <label>Date</label>
+                        <input appFormError formControlName="date" type="date" class="form-control"
+                            [class.is-invalid]="f['date'].invalid && (f['date'].dirty || f['date'].touched)" />
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Category</label>
+                        <ng-select appFormError formControlName="category_id" [items]="categoryList" bindLabel="name" bindValue="id"
+                            placeholder="Select Category"
+                            [class.is-invalid]="f['category_id'].invalid && (f['category_id'].dirty || f['category_id'].touched)">
+                        </ng-select>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Account</label>
+                        <ng-select appFormError formControlName="account_id" [items]="accountList" bindLabel="name" bindValue="id"
+                            placeholder="Select Account"
+                            [class.is-invalid]="f['account_id'].invalid && (f['account_id'].dirty || f['account_id'].touched)">
+                        </ng-select>
                     </div>
                 </div>
             </div>
 
             <div class="row">
-
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="">Color Code</label>
-                        <input formControlName="color_code" type="text" class="form-control">
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="">Status</label>
-                        <label class="switch">
-                            <input formControlName="is_active" type="checkbox">
-                            <span class="slider round"></span>
-                        </label>
+                        <label>Amount</label>
+                        <input appFormError formControlName="amount" type="number" class="form-control"
+                            [class.is-invalid]="f['amount'].invalid && (f['amount'].dirty || f['amount'].touched)" />
                     </div>
                 </div>
             </div>
@@ -44,8 +55,8 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="form-group">
-                        <label for="">Description</label>
-                        <textarea formControlName="description" class="form-control"></textarea>
+                        <label>Remarks</label>
+                        <textarea formControlName="remarks" class="form-control"></textarea>
                     </div>
                 </div>
             </div>

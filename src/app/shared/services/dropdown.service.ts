@@ -15,5 +15,9 @@ export class DropdownService {
         return this.http.get<DropdownItem[]>(this.apiUrl + '/category');
     }
 
+    getAccountsDropdown(): Observable<DropdownItem[]> {
+        return this.http.get<DropdownItem[]>(this.apiUrl + '/account');
+    }
+
 }
 

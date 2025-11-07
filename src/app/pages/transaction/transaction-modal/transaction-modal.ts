@@ -25,6 +25,7 @@ export class TransactionModal {
   private _toastr = inject(ToastrService);
   private _dialogRef = inject(MatDialogRef<TransactionModal>);
   public categoryList: DropdownItem[] = [];
+  public accountList: DropdownItem[] = [];
 
   modalForm: FormGroup;
 
@@ -34,19 +35,18 @@ export class TransactionModal {
     this.modalForm = this._fb.nonNullable.group({
       id: [],
       date: [, Validators.required],
-      name: [, Validators.required],
       system_entry_no: [],
-      amount: [0, [Validators.required, Validators.min(0.01)]],
+      amount: [0, Validators.required],
       remarks: [],
       category_id: [, Validators.required],
-      user_id: [, Validators.required],
-      account_id: [, Validators.required],
-      is_active: [true]
+      user_id: [],
+      account_id: [, Validators.required]
     });
   }
 
   ngOnInit() {
     this.getCategoryDropdownList();
+    this.getAccountDropdownList();
   }
 
   get f() { return this.modalForm.controls; }
@@ -55,6 +55,14 @@ export class TransactionModal {
     this._dropdownService.getCategoryDropdown().subscribe({
       next: (items: DropdownItem[]) => {
         this.categoryList = items;
+      }
+    })
+  }
+
+  getAccountDropdownList() {
+    this._dropdownService.getAccountsDropdown().subscribe({
+      next: (items: DropdownItem[]) => {
+        this.accountList = items;
       }
     })
   }
