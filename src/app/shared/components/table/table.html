@@ -24,15 +24,15 @@
                 @for (header of tableHeaders; track $index;) {
                 <td [class.text-end]="header.align == 'right'" class="border-[1px] border-[#ccc]">
                     @if (header.property == 'sn') {
-                    {{rowIndex + 1}}
+                    {{rowIndex + filterData.pageIndex * filterData.pageSize + 1}}
                     }
                     @else if(header.status == true) {
-                        @if(data[header.property] == true) {
-                            <span class="status active">Active</span>
-                        }
-                        @else {
-                            <span class="status inactive">Inactive</span>
-                        }
+                    @if(data[header.property] == true) {
+                    <span class="status active">Active</span>
+                    }
+                    @else {
+                    <span class="status inactive">Inactive</span>
+                    }
                     <span></span>
                     }
                     @else {

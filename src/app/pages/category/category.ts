@@ -3,8 +3,6 @@ import { CommonService } from '../../shared/services/common.service';
 import { Table } from '../../shared/components/table/table';
 import { SortEvent } from '../../shared/directives/sortable/sortable-header.directive';
 import { ICategory } from './category.model';
-import { PaginatorComponent } from '../../shared/components/paginator/paginator.component';
-import { PageEvent } from '@angular/material/paginator';
 import { CategoryService } from './category.service';
 import { MatDialog } from '@angular/material/dialog';
 import { CategoryModal } from './category-modal/category-modal';
@@ -16,7 +14,7 @@ import { ApiResponse } from '../../shared/types/api-response.model';
 
 @Component({
   selector: 'app-category',
-  imports: [Table, PaginatorComponent],
+  imports: [Table],
   providers: [CategoryService],
   templateUrl: './category.html',
   styleUrl: './category.scss'
@@ -27,6 +25,7 @@ export class Category {
   private _dialog = inject(MatDialog);
   private _toastr = inject(ToastrService);
   length: number = 0;
+  public sortedData: ICategory[] = [];
 
   filterData: FilterData = {
     pageIndex: 0,
@@ -40,7 +39,7 @@ export class Category {
     { name: 'Category Name', property: 'name', sort: true, sortBy: 'name' },
     { name: 'Type', property: 'type', sort: true, sortBy: 'type' },
     { name: 'Description', property: 'description', sort: false },
-    { name: 'Status', property: 'is_active', sort: true, sortBy: 'isActive', status: true },
+    { name: 'Status', property: 'is_active', sort: true, sortBy: 'is_active', status: true },
   ];
 
   tableData: ICategory[] = [];
@@ -52,23 +51,12 @@ export class Category {
   }
 
   onSort(event: SortEvent) {
-    const existing = this.filterData.sort.find((item: any) => item.field === event.column);
-    if (existing) {
-      existing.value = event.direction;
-    } else {
-      this.filterData.sort.push({
-        field: event.column,
-        value: event.direction
-      });
+    if (event.direction === '' || event.column === '') {
+      this.sortedData = this.tableData;
     }
-    this.filterData.sort = this.filterData.sort.filter((item: any) => item.value);
-    this.getCategoryList();
-  }
-
-  onPageChange(pageData: PageEvent) {
-    this.filterData.pageIndex = pageData.pageIndex;
-    this.filterData.pageSize = pageData.pageSize;
-    this.getCategoryList();
+    else {
+      this.sortedData = this.commonService.sortList([...this.tableData], event.column, event.direction);
+    }
   }
 
 
@@ -77,6 +65,7 @@ export class Category {
     this._categoryService.getCategorys(this.filterData).subscribe({
       next: (categorys: PageResponse<ICategory[]>) => {
         this.tableData = categorys.content;
+        this.sortedData = this.tableData;
         this.commonService.hideSpinner();
       },
       error: (err) => {

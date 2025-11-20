@@ -34,12 +34,12 @@ export class TransactionModal {
   constructor() {
     this.modalForm = this._fb.nonNullable.group({
       id: [],
-      date: [, Validators.required],
-      system_entry_no: [],
-      amount: [0, Validators.required],
+      date: [new Date().toISOString().substring(0, 10), Validators.required],
+      system_entry_no: ["S1"],
+      amount: [, Validators.required],
       remarks: [],
       category_id: [, Validators.required],
-      user_id: [],
+      user_id: [101],
       account_id: [, Validators.required]
     });
   }

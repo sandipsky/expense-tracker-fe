@@ -81,6 +81,7 @@ export class Transaction {
     this._transactionService.getTransactions(this.filterData).subscribe({
       next: (transactions: PageResponse<ITransaction[]>) => {
         this.tableData = transactions.content;
+        this.length = transactions.totalElements;
         this.commonService.hideSpinner();
       },
       error: (err) => {
