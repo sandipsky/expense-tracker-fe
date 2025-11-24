@@ -18,8 +18,7 @@
         border: 1px solid var(--stroke-color);
         background-color: var(--white-color);
         color: var(--text-color);
-        border-radius: 3.2px;
-        border: 1.5px solid rgba(226, 232, 240, 1);
+        border-radius: 4px;
         flex-grow: 1;
         outline: none;
 
@@ -99,4 +98,16 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%;
+}
+
+//Hide arrow on number input
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+    appearance: textfield;
 }
